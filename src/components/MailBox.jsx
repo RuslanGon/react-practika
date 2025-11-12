@@ -1,6 +1,6 @@
 import React from "react";
 
-const MailBox = ({ boxTitle, mailBoxCount,box }) => {
+const MailBox = ({ boxTitle, mailBoxCount,boxUsers }) => {
   return (
     <div>
       <h1>{boxTitle}</h1>
@@ -10,12 +10,12 @@ const MailBox = ({ boxTitle, mailBoxCount,box }) => {
       <p><b>Нет ативных ячеек</b></p>
       }
       <ul>
-        {Array.isArray(box) && box.map((item) => (
-          <li key={item.id}>
-            <span>Name:</span> {item.usrName}
-            <br />
-            <span> Email:</span> {item.userEmail}
-          </li>
+        {Array.isArray(boxUsers) && boxUsers.map((user) => (
+         <li key={user.id}>
+         <span><b>name: </b>:</span> {user.usrName}
+         <br />
+         <span><b>email: </b></span> {user.userEmail}
+       </li>
         ))}
       </ul>
     </div>
