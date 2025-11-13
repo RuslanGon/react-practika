@@ -16,9 +16,11 @@ if(drinks[drinkName] === 2 && drinkName === 'beer') {
    setDrinks({ beer: 0, wisky: 0, vine: 0 })
   }
 
+  const totalCount = drinks.beer + drinks.wisky + drinks.vine
+
   return (
     <div>
-      <DrinksValues drinks={drinks} />
+      <DrinksValues drinks={drinks} totalCount={totalCount} />
 
       <button onClick={() => handleLogDrink('beer')}>Beer 🍺</button>
       <button onClick={() => handleLogDrink('wisky')}>Wisky 🥃</button>
