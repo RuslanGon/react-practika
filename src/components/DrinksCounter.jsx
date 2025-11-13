@@ -5,10 +5,11 @@ const DrinksCounter = () => {
   const [drinks, setDrinks] = useState({ beer: 0, wisky: 0, vine: 0 })
 
   const handleLogDrink = (drinkName) => {
-    setDrinks({
-      ...drinks,
-      [drinkName]: drinks[drinkName] + 1,
-    })
+if(drinks[drinkName] === 2 && drinkName === 'beer') {
+    alert('Больше нет пива')
+    return
+}
+    setDrinks({...drinks,[drinkName]: drinks[drinkName] + 1,})
   }
 
   const reset = () => {
