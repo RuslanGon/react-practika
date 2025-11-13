@@ -2,35 +2,27 @@ import React, { useState } from 'react'
 import DrinksValues from './DrinksValues.jsx'
 
 const DrinksCounter = () => {
+  const [drinks, setDrinks] = useState({ beer: 0, wisky: 0, vine: 0 })
 
-const initialDrinks = {beer:3, wisky:5, vine:1}     
+  const handleLogDrink = (drinkName) => {
+    setDrinks({
+      ...drinks,
+      [drinkName]: drinks[drinkName] + 1,
+    })
+  }
 
-const handleLogDrink = (drinkName) => {
-    console.log(drinkName);
-}    
-
-const [counter, setCounter] = useState(0)
-
-const increment = () => {
-setCounter(counter + 1)
-
-}
-
-const decrement = () => {
-    if(counter === 0) return
-    setCounter(counter - 1)
-    }
- 
+  const reset = () => {
+   setDrinks({ beer: 0, wisky: 0, vine: 0 })
+  }
 
   return (
     <div>
-        <button onClick={increment}>counter: {counter}</button>
-        <button onClick={decrement}>-</button>
+      <DrinksValues drinks={drinks} />
 
-         <DrinksValues drinks={initialDrinks} />
-        <button onClick={() => handleLogDrink('Beer')}>Beer 🍺</button>
-        <button onClick={() => handleLogDrink('Wisky')}>Wisky 🥃</button>
-        <button onClick={() => handleLogDrink('Vine')}>Vine 🍷</button>
+      <button onClick={() => handleLogDrink('beer')}>Beer 🍺</button>
+      <button onClick={() => handleLogDrink('wisky')}>Wisky 🥃</button>
+      <button onClick={() => handleLogDrink('vine')}>Vine 🍷</button>
+      <button onClick={reset}>reset</button>
     </div>
   )
 }
