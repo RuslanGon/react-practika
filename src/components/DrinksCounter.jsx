@@ -2,13 +2,13 @@ import React, { useState } from 'react'
 import DrinksValues from './DrinksValues.jsx'
 
 const DrinksCounter = () => {
-  const [drinks, setDrinks] = useState({ beer: 0, wisky: 0, vine: 0 })
+const [drinks, setDrinks] = useState({ beer: 0, wisky: 0, vine: 0 })
 
   const handleLogDrink = (drinkName) => {
-if(drinks[drinkName] === 7 && drinkName === 'beer') {
-    alert('Больше нет пива')
-    return
-}
+// if(drinks[drinkName] === 7 && drinkName === 'beer') {
+//     alert('Больше нет пива')
+//     return
+// }
     setDrinks({...drinks,[drinkName]: drinks[drinkName] + 1,})
   }
 
