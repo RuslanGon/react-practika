@@ -1,11 +1,11 @@
 import React from 'react'
 
-const DrinksValues = () => {
+const DrinksValues = ({drinks}) => {
   return (
 <ul>
-    <li>Beer: 3</li>
-    <li>Wisky: 5</li>
-    <li>Vine: 2</li>
+    <li>Beer: {drinks.beer}</li>
+    <li>Wisky: {drinks.wisky}</li>
+    <li>Vine: {drinks.vine}</li>
 </ul>
   )
 }

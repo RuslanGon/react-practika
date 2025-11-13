@@ -9,7 +9,7 @@ const handleLogDrink = (drinkName) => {
 
   return (
     <div>
-         <DrinksValues />
+         <DrinksValues drinks={{beer:3, wisky:5, vine:1 }} />
         <button onClick={() => handleLogDrink('Beer')}>Beer 🍺</button>
         <button onClick={() => handleLogDrink('Wisky')}>Wisky 🥃</button>
         <button onClick={() => handleLogDrink('Vine')}>Vine 🍷</button>
