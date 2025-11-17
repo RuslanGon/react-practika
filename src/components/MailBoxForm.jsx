@@ -8,7 +8,7 @@ const MailBoxForm = ({onAddUser}) => {
       const userName = e.currentTarget.elements.userName.value;
       const formData = {userEmail, userName};
       onAddUser(formData)
-
+      e.currentTarget.reset();
     };
     
   return (

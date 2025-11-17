@@ -5,14 +5,14 @@
       { "id": "3", "userEmail": "dmytro.koval@gmail.com", "userName": "Dmytro" }
     ],
     "NovaPoshta": [
-      { "id": "4", "userEmail": "olga.shevchenko@yahoo.com", "usrName": "Olga" },
-      { "id": "5", "userEmail": "serhii.bondar@outlook.com", "usrName": "Serhii" },
-      { "id": "6", "userEmail": "iryna.melnyk@gmail.com", "usrName": "Iryna" }
+      { "id": "4", "userEmail": "olga.shevchenko@yahoo.com", "userName": "Olga" },
+      { "id": "5", "userEmail": "serhii.bondar@outlook.com", "userName": "Serhii" },
+      { "id": "6", "userEmail": "iryna.melnyk@gmail.com", "userName": "Iryna" }
     ],
     "ukrPoshta": [
-      { "id": "7", "userEmail": "andrii.kuzmenko@gmail.com", "usrName": "Andrii" },
-      { "id": "8", "userEmail": "maria.ivanova@mail.com", "usrName": "Maria" },
-      { "id": "9", "userEmail": "oleh.kravets@ukr.net", "usrName": "Oleh" }
+      { "id": "7", "userEmail": "andrii.kuzmenko@gmail.com", "userName": "Andrii" },
+      { "id": "8", "userEmail": "maria.ivanova@mail.com", "userName": "Maria" },
+      { "id": "9", "userEmail": "oleh.kravets@ukr.net", "userName": "Oleh" }
     ]
   }
   

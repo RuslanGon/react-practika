@@ -16,14 +16,16 @@ const finalUser = {
 } 
 // setUsers([...users, finalUser])
 setUsers(prevState => [...prevState, finalUser]) 
+}
 
-
+const onDeleteUser = (userId) => {
+setUsers(prevUsers => prevUsers.filter(user => user.id !== userId))
 }
 
   return (
 <div>
-  <MailBoxForm onAddUser={onAddUser} />
-  <MailBox boxTitle='Meest Express' boxUsers={users}  />
+  <MailBoxForm onAddUser={onAddUser}  />
+  <MailBox boxTitle='Meest Express' boxUsers={users} onDeleteUser={onDeleteUser}  />
 </div>
   )
 }
