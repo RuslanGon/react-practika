@@ -1,13 +1,25 @@
 import './App.css'
 import MailBox from './components/MailBox.jsx'
 import data from '../data.json';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { nanoid } from 'nanoid';
 import MailBoxForm from './components/MailBoxForm.jsx';
   
 function App() {
 
-const [users, setUsers]  = useState(data.meestExpres) 
+const [users, setUsers]  = useState(() => {
+  const stingiUsers = localStorage.getItem('users')
+  if(!stingiUsers) return data.meestExpres
+  const parseUsers = JSON.parse(stingiUsers)
+  if (!Array.isArray(parseUsers) || parseUsers.length === 0) {
+    return data.meestExpres;
+  }
+  return parseUsers;
+}) 
+
+useEffect(() => {
+  localStorage.setItem('users', JSON.stringify(users))
+   }, [users])
 
 const onAddUser = (formData) => {
 const finalUser = {
