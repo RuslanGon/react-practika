@@ -7,6 +7,7 @@ import MailBoxForm from './components/MailBoxForm.jsx';
   
 function App() {
 
+const [filter, setFilter] = useState('')  
 const [users, setUsers]  = useState(() => {
   const stingiUsers = localStorage.getItem('users')
   if(!stingiUsers) return data.meestExpres
@@ -34,10 +35,23 @@ const onDeleteUser = (userId) => {
 setUsers(prevUsers => prevUsers.filter(user => user.id !== userId))
 }
 
+const onChangeFilter = (e) => {
+setFilter(e.target.value)
+}
+
+const filteredUsers = users.filter(user => 
+  user.userName.toLowerCase().includes(filter.toLowerCase()) ||
+  user.userEmail.toLowerCase().includes(filter.toLowerCase())
+);
+
   return (
 <div>
   <MailBoxForm onAddUser={onAddUser}  />
-  <MailBox boxTitle='Meest Express' boxUsers={users} onDeleteUser={onDeleteUser}  />
+  <section>
+    <h2>Search user by name or email</h2>
+    <input onChange={onChangeFilter} type="text" placeholder='search' value={filter} />
+  </section>
+  <MailBox boxTitle='Meest Express' boxUsers={filteredUsers} onDeleteUser={onDeleteUser}  />
 </div>
   )
 }
