@@ -11,10 +11,11 @@ const MailBox = ({ boxTitle, boxUsers, onDeleteUser }) => {
             <br />
             <span><b>email:</b></span> {user.userEmail}
             <br />
-            <button type="button" onClick={() => onDeleteUser(user.id)}>Delete User</button>
+            <button type="button" onClick={() => onDeleteUser(user.id)}>❌ user</button>
           </li>
         ))}
       </ul>
+      
     </div>
   );
 };
