@@ -22,8 +22,8 @@ setUsers(prevState => [...prevState, finalUser])
 
   return (
 <div>
-  <MailBoxForm />
-  <MailBox boxTitle='Meest Express' boxUsers={users} />
+  <MailBoxForm onAddUser={onAddUser} />
+  <MailBox boxTitle='Meest Express' boxUsers={users}  />
 </div>
   )
 }

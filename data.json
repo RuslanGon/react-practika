@@ -1,8 +1,8 @@
 {
     "meestExpres": [
-      { "id": "1", "userEmail": "Ruslan@gmail.com", "usrName": "Ruslan" },
-      { "id": "2", "userEmail": "anna.petrenko@mail.com", "usrName": "Anna" },
-      { "id": "3", "userEmail": "dmytro.koval@gmail.com", "usrName": "Dmytro" }
+      { "id": "1", "userEmail": "Ruslan@gmail.com", "userName": "Ruslan" },
+      { "id": "2", "userEmail": "anna.petrenko@mail.com", "userName": "Anna" },
+      { "id": "3", "userEmail": "dmytro.koval@gmail.com", "userName": "Dmytro" }
     ],
     "NovaPoshta": [
       { "id": "4", "userEmail": "olga.shevchenko@yahoo.com", "usrName": "Olga" },

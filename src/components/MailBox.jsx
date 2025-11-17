@@ -7,7 +7,7 @@ const MailBox = ({ boxTitle, boxUsers }) => {
       <ul>
         {Array.isArray(boxUsers) && boxUsers.map((user) => (
          <li key={user.id}>
-         <span><b>name: </b>:</span> {user.usrName}
+         <span><b>name: </b>:</span> {user.userName}
          <br />
          <span><b>email: </b></span> {user.userEmail}
        </li>
