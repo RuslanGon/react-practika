@@ -52,18 +52,9 @@ const MailBoxForm = ({ onAddUser }) => {
         <div>
           <span>favourite color:</span>
           <br />
-          <label>
-            <Field type="radio" name="favColor" value="red" />
-            Red
-          </label>
-          <label>
-            <Field type="radio" name="favColor" value="green" />
-            Green
-          </label>
-          <label>
-            <Field type="radio" name="favColor" value="blue" />
-            Blue
-          </label>
+          <label><Field type="radio" name="favColor" value="red" />Red:</label>
+          <label><Field type="radio" name="favColor" value="green" />Green:</label>
+          <label><Field type="radio" name="favColor" value="blue" />Blue:</label>
           <ErrorMessage name="favColor" component="span" />
         </div>
         <br />
