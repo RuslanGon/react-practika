@@ -7,7 +7,7 @@ const initialValues = {
   userEmail: ""
 };
 
-const userSchema = yup.object().shape({
+const mailBoxSchema = yup.object().shape({
   userName: yup.string().min(2, "Too Short!").required("enter your email, please"),
   userEmail: yup.string().email("Must be a valid email!").required("enter your name, please"),
 });
@@ -20,13 +20,12 @@ const MailBoxForm = ({onAddUser}) => {
     };
     
   return (
-    <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={userSchema}>
+    <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={mailBoxSchema}>
     <Form>
         <h2>Add new user</h2>
         <label>
             <span>user email:</span>
             <br />
-            
             <Field type="email" name="userEmail" placeholder='your email' />
             <ErrorMessage name="userEmail" component="span" />
         </label>
