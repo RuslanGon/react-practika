@@ -8,15 +8,14 @@ const initialValues = {
 };
 
 const userSchema = yup.object().shape({
-  userName: yup.string().min(2, "Too Short!").max(50, "Too Long!").required("enter your email, please"),
+  userName: yup.string().min(2, "Too Short!").required("enter your email, please"),
   userEmail: yup.string().email("Must be a valid email!").required("enter your name, please"),
 });
 
 const MailBoxForm = ({onAddUser}) => {
 
      const handleSubmit = (values, actions) => {
-      // onAddUser(formData)
-      console.log(values);
+      onAddUser(values)
       actions.resetForm();
     };
     
