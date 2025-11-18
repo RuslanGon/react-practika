@@ -8,8 +8,8 @@ const MailBox = ({ boxTitle, boxUsers, onDeleteUser }) => {
       <ul>
         {Array.isArray(boxUsers) && boxUsers.map((user) => (
          <li key={user.id}>
-         <div className={css.name}><b>name:</b><div className={css.color}></div>{user.userName}</div>
-         <div className={css.name}><b>email:</b>{user.userEmail}
+         <div className={css.name}><b>name:</b><div style={{backgroundColor:user.favColor}} className={css.color}></div>{user.userName}</div>
+         <div className={css.name}><b>email:</b> {user.userEmail}
          </div>
          <button type="button" onClick={() => onDeleteUser(user.id)}>
            ❌ user
