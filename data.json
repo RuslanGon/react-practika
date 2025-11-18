@@ -1,8 +1,8 @@
 {
     "meestExpres": [
-      { "id": "1", "userEmail": "Ruslan@gmail.com", "userName": "Ruslan" },
-      { "id": "2", "userEmail": "anna.petrenko@mail.com", "userName": "Anna" },
-      { "id": "3", "userEmail": "dmytro.koval@gmail.com", "userName": "Dmytro" }
+      { "id": "1", "userEmail": "Ruslan@gmail.com", "userName": "Ruslan", "favColor": "red" },
+      { "id": "2", "userEmail": "anna.petrenko@mail.com", "userName": "Anna", "favColor": "green" },
+      { "id": "3", "userEmail": "dmytro.koval@gmail.com", "userName": "Dmytro", "favColor": "blue" }
     ],
     "NovaPoshta": [
       { "id": "4", "userEmail": "olga.shevchenko@yahoo.com", "userName": "Olga" },
