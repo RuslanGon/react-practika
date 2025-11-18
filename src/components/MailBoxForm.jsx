@@ -1,3 +1,4 @@
+import { Form, Formik } from 'formik';
 import React from 'react'
 
 const MailBoxForm = ({onAddUser}) => {
@@ -12,7 +13,8 @@ const MailBoxForm = ({onAddUser}) => {
     };
     
   return (
-    <form onSubmit={handleSubmit}>
+    <Formik initialValues={{}} onSubmit={handleSubmit}>
+    <Form>
         <h2>Add new user</h2>
         <label>
             <span>user email:</span>
@@ -27,7 +29,8 @@ const MailBoxForm = ({onAddUser}) => {
         </label>
         <br />
         <button type='submit'>Create new user</button>
-    </form>
+    </Form>
+    </Formik>
   )
 }
 
