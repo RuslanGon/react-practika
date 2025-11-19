@@ -3,12 +3,12 @@ import React from "react";
 import * as yup from "yup";
 
 const initialValues = {
-  search: "",
+    searchTerm: "",
 
 };
 
 const searchFormSchema = yup.object().shape({
-    search: yup
+    searchTerm: yup
     .string()
     .min(2, "Too Short!")
     .required("enter your search product, please"),
@@ -25,8 +25,8 @@ console.log(values);
       <Form>
         <h2>Search product by name</h2>
         <label>
-          <Field type="text" name="search" placeholder="search product" />
-          <ErrorMessage name="search" component="span" />
+          <Field type="text" name="searchTerm" placeholder="search product" />
+          <ErrorMessage name="searchTerm" component="span" />
         </label>
         <br />
       
