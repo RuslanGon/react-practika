@@ -4,20 +4,15 @@ import * as yup from "yup";
 
 const initialValues = {
     searchTerm: "",
-
 };
 
 const searchFormSchema = yup.object().shape({
-    searchTerm: yup
-    .string()
-    .min(2, "Too Short!")
-    .required("enter your search product, please"),
+searchTerm: yup.string().min(2, "Too Short!").required("enter your search product, please"),
 });
 
-const SearchForm = () => {
-  const handleSubmit = (values, actions) => {
-console.log(values);
-    actions.resetForm();
+const SearchForm = ({onSearchQuery}) => {
+const handleSubmit = (values) => {
+onSearchQuery(values.searchTerm)
   };
 
   return (
@@ -28,8 +23,6 @@ console.log(values);
           <Field type="text" name="searchTerm" placeholder="search product" />
           <ErrorMessage name="searchTerm" component="span" />
         </label>
-        <br />
-      
         <br />
         <button type="submit">Search product 🔎</button>
       </Form>

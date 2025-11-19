@@ -9,6 +9,8 @@ const AppHTTPRequest = () => {
   const [products, setProducts] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
   const [isError, setIsError] = useState(false)
+  const [query, setQuery] = useState('')
+console.log(query);
 
   useEffect(() => {
     async function fetchProducts() {
@@ -27,12 +29,16 @@ const AppHTTPRequest = () => {
     fetchProducts()
   }, [])
 
+  const onSearchQuery = (searchTerm) => {
+setQuery(searchTerm)
+  }
+
   return (
     <div>
       <h1>Products smart marker</h1>
+      <SearchForm onSearchQuery={onSearchQuery}/>
       {isLoading && <Loader />}
       {isError && <Error />}
-      <SearchForm />
      <ProductList products={products}/>
     </div>
   )
