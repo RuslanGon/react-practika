@@ -10,7 +10,6 @@ const AppHTTPRequest = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [isError, setIsError] = useState(false)
   const [query, setQuery] = useState('')
-console.log(query);
 
   useEffect(() => {
     async function fetchProducts() {
