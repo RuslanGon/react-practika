@@ -8,6 +8,7 @@ import MailBoxForm from './components/MailBoxForm.jsx';
 function App() {
 
 const [filter, setFilter] = useState('')  
+const [counter, setCounter] = useState(0)
 const [users, setUsers]  = useState(() => {
   const stingiUsers = localStorage.getItem('users')
   if(!stingiUsers) return data.meestExpres
@@ -44,8 +45,16 @@ const filteredUsers = users.filter(user =>
   user.userEmail.toLowerCase().includes(filter.toLowerCase())
 );
 
+const clickCounter = () => {
+  setCounter(counter + 1)
+} 
+
   return (
 <div>
+  <div>
+  <h3> Counter: {counter}</h3>
+  <button onClick={clickCounter}>Click to incremant</button>
+  </div>
   <MailBoxForm onAddUser={onAddUser}  />
   <section>
     <h2>Search user by name or email</h2>
