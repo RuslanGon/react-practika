@@ -1,7 +1,7 @@
 import './App.css'
 import MailBox from './components/MailBox.jsx'
 import data from '../data.json';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { nanoid } from 'nanoid';
 import MailBoxForm from './components/MailBoxForm.jsx';
   
@@ -40,21 +40,21 @@ const onChangeFilter = (e) => {
 setFilter(e.target.value)
 }
 
-const filteredUsers = users.filter(user => 
-  user.userName.toLowerCase().includes(filter.toLowerCase()) ||
-  user.userEmail.toLowerCase().includes(filter.toLowerCase())
-);
+// const filteredUsers = users.filter(user => 
+//   user.userName.toLowerCase().includes(filter.toLowerCase()) ||
+//   user.userEmail.toLowerCase().includes(filter.toLowerCase())
+// );
 
-const clickCounter = () => {
-  setCounter(counter + 1)
-} 
+const filteredUsers = useMemo(() => {
+  return users.filter(user =>
+    user.userName.toLowerCase().includes(filter.toLowerCase()) ||
+    user.userEmail.toLowerCase().includes(filter.toLowerCase())
+  );
+}, [users, filter]);
+
 
   return (
 <div>
-  <div>
-  <h3> Counter: {counter}</h3>
-  <button onClick={clickCounter}>Click to incremant</button>
-  </div>
   <MailBoxForm onAddUser={onAddUser}  />
   <section>
     <h2>Search user by name or email</h2>
