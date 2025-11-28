@@ -14,10 +14,7 @@ return parsetDrinks
 const [isVisibleBar, setIsVisibleBar] = useState(true)
 
   const handleLogDrink = (drinkName) => {
-// if(drinks[drinkName] === 7 && drinkName === 'beer') {
-//     alert('Больше нет пива')
-//     return
-// }
+
     setDrinks({...drinks,[drinkName]: drinks[drinkName] + 1,})
   }
 
