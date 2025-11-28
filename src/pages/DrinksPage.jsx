@@ -11,7 +11,7 @@ const [drinks, setDrinks] = useState(() => {
  const parsetDrinks = JSON.parse(stringiDrinks) ?? initialValues
 return parsetDrinks
 })
-const [isVisibleBar, setIsVisibleBar] = useState(false)
+const [isVisibleBar, setIsVisibleBar] = useState(true)
 
   const handleLogDrink = (drinkName) => {
 // if(drinks[drinkName] === 7 && drinkName === 'beer') {

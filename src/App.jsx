@@ -20,7 +20,6 @@ const App = () => {
         <NavLink className={getActiveClass} to="/products">Products</NavLink>
         <NavLink className={getActiveClass} to="/search">Search Page</NavLink>
         <NavLink className={getActiveClass} to="/drinks">Drinks</NavLink>
-
       </nav>
       </header>
       <main>
