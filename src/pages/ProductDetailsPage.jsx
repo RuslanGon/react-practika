@@ -36,7 +36,7 @@ const ProductDetailsPage = () => {
     <div className={css.container}>
       {productDetails && (
         <div className={css.card}>
-          <button className={css.backButton} onClick={() => navigate(-1)}>
+          <button className={css.backButton} onClick={() => navigate('/products')}>
             ← Back
           </button>
           <img
