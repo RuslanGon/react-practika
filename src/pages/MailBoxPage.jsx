@@ -1,4 +1,5 @@
-import './App.css'
+
+import '../App.css'
 import MailBox from '../components/MailBox.jsx'
 import data from '../../data.json';
 import { useEffect, useMemo, useState } from 'react';
