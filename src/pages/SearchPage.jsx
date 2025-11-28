@@ -6,7 +6,7 @@ import { useProductSearch } from '../hooks/useProductSearch.jsx'
 
 
 const SearchPage = () => {
-const {products, isLoading, isError, onSearchQuery} = useProductSearch()
+const {products, isLoading, isError, onSearchQuery} = useProductSearch({isSearhPage: true})
 
   return (
     <div>

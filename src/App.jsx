@@ -7,6 +7,7 @@ import ProductsPage from "./pages/ProductsPage.jsx";
 import SearchPage from "./pages/SearchPage.jsx";
 import DrinksPage from "./pages/DrinksPage.jsx";
 import HomePage from "./pages/HomePage.jsx";
+import NotFoundPage from "./pages/NotFoundPage.jsx";
 
 const getActiveClass = ({ isActive }) =>
   clsx(css.navLink, { [css.active]: isActive });
@@ -30,7 +31,9 @@ const App = () => {
            <Route path="/mailbox" element={<MailBoxPage />} />
            <Route path="/products" element={<ProductsPage />} />
            <Route path="/search" element={<SearchPage />} />
-           <Route path="/drinks" element={<DrinksPage />} />
+           <Route path="/drinks" element={<DrinksPage />} />NotFoundPage
+           <Route path="*" element={<NotFoundPage />} />
+
         </Routes>
       </main>
     </div>
