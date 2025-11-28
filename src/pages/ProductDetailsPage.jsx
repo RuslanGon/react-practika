@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import Loader from "../components/Loader.jsx";
 import Error from "../components/Error.jsx";
 import { requestProductDetailsById } from "../services/api.js";
 import css from "./ProductDetailsPage.module.css";
+import { Link, useParams } from "react-router-dom";
 
 const ProductDetailsPage = () => {
   const { productId } = useParams();
@@ -35,12 +35,18 @@ const ProductDetailsPage = () => {
     <div className={css.container}>
       {productDetails && (
         <div className={css.card}>
-          <img className={css.image} src={productDetails.thumbnail}
-          alt={productDetails.title}/>
+          <img
+            className={css.image}
+            src={productDetails.thumbnail}
+            alt={productDetails.title}
+          />
           <div className={css.info}>
             <h2 className={css.title}>{productDetails.title}</h2>
             <p className={css.brand}>Brand: {productDetails.brand}</p>
             <h3 className={css.price}>Price: ${productDetails.price}</h3>
+            <Link to={"/comments"}>Comments</Link>
+            <Link to={"/view"}>View</Link>
+
           </div>
         </div>
       )}
