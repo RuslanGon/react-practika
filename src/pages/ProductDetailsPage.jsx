@@ -35,11 +35,8 @@ const ProductDetailsPage = () => {
     <div className={css.container}>
       {productDetails && (
         <div className={css.card}>
-          <img
-            className={css.image}
-            src={productDetails.thumbnail}
-            alt={productDetails.title}
-          />
+          <img className={css.image} src={productDetails.thumbnail}
+          alt={productDetails.title}/>
           <div className={css.info}>
             <h2 className={css.title}>{productDetails.title}</h2>
             <p className={css.brand}>Brand: {productDetails.brand}</p>
