@@ -11,9 +11,9 @@ const App = () => {
     <div>
       <header>
       <nav className={css.nav}>
-      <NavLink className={css.navlink} to="/mailbox">MailBox</NavLink>
-        <NavLink className={css.navlink} to="/products">Products</NavLink>
-        <NavLink className={css.navlink} to="/search">Search Page</NavLink>
+      <NavLink className={css.navLink} to="/mailbox">MailBox</NavLink>
+        <NavLink className={css.navLink} to="/products">Products</NavLink>
+        <NavLink className={css.navLink} to="/search">Search Page</NavLink>
       </nav>
       </header>
     </div>
