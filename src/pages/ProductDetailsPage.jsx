@@ -3,10 +3,11 @@ import Loader from "../components/Loader.jsx";
 import Error from "../components/Error.jsx";
 import { requestProductDetailsById } from "../services/api.js";
 import css from "./ProductDetailsPage.module.css";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 const ProductDetailsPage = () => {
   const { productId } = useParams();
+  const navigate = useNavigate();
   const [productDetails, setProductDetails] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -35,6 +36,9 @@ const ProductDetailsPage = () => {
     <div className={css.container}>
       {productDetails && (
         <div className={css.card}>
+          <button className={css.backButton} onClick={() => navigate(-1)}>
+            ← Back
+          </button>
           <img
             className={css.image}
             src={productDetails.thumbnail}
@@ -44,9 +48,10 @@ const ProductDetailsPage = () => {
             <h2 className={css.title}>{productDetails.title}</h2>
             <p className={css.brand}>Brand: {productDetails.brand}</p>
             <h3 className={css.price}>Price: ${productDetails.price}</h3>
-            <Link to={"/comments"}>Comments</Link>
-            <Link to={"/view"}>View</Link>
-
+            <div className={css.links}>
+              <Link to={"/comments"}>Comments</Link>
+              <Link to={"/view"}>View</Link>
+            </div>
           </div>
         </div>
       )}
