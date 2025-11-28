@@ -5,6 +5,7 @@ import clsx from "clsx";
 import MailBoxPage from "./pages/MailBoxPage.jsx";
 import ProductsPage from "./pages/ProductsPage.jsx";
 import SearchPage from "./pages/SearchPage.jsx";
+import DrinksPage from "./pages/DrinksPage.jsx";
 
 const getActiveClass = ({ isActive }) =>
   clsx(css.navLink, { [css.active]: isActive });
@@ -18,6 +19,8 @@ const App = () => {
         <NavLink className={getActiveClass} to="/mailbox">MailBox</NavLink>
         <NavLink className={getActiveClass} to="/products">Products</NavLink>
         <NavLink className={getActiveClass} to="/search">Search Page</NavLink>
+        <NavLink className={getActiveClass} to="/drinks">Drinks</NavLink>
+
       </nav>
       </header>
       <main>
@@ -25,8 +28,7 @@ const App = () => {
            <Route path="/mailbox" element={<MailBoxPage />} />
            <Route path="/products" element={<ProductsPage />} />
            <Route path="/search" element={<SearchPage />} />
-
-
+           <Route path="/drinks" element={<DrinksPage />} />
 
         </Routes>
       </main>
