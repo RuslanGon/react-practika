@@ -29,11 +29,10 @@ const ProductDetailsPage = () => {
     if (productId) fetchProductDetails();
   }, [productId]);
 
-  if (isLoading) return <Loader />;
-  if (isError) return <Error />;
-
   return (
     <div className={css.container}>
+      {isLoading && <Loader />}
+      {isError && <Error />}
       {productDetails && (
         <div className={css.card}>
           <button className={css.backButton} onClick={() => navigate('/products')}>
