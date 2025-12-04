@@ -1,16 +1,16 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import css from "./App.module.css";
 import { NavLink, Route, Routes } from "react-router-dom";
 import clsx from "clsx";
-import MailBoxPage from "./pages/MailBoxPage.jsx";
-import ProductsPage from "./pages/ProductsPage.jsx";
-import SearchPage from "./pages/SearchPage.jsx";
-import DrinksPage from "./pages/DrinksPage.jsx";
-import HomePage from "./pages/HomePage.jsx";
-import NotFoundPage from "./pages/NotFoundPage.jsx";
-import ProductDetailsPage from "./pages/ProductDetailsPage.jsx";
-import CommentsPage from "./pages/CommentsPage.jsx";
-import ViewPage from "./pages/ViewPage.jsx";
+const MailBoxPage = lazy(() => import("./pages/MailBoxPage.jsx"));
+const ProductsPage = lazy(() => import("./pages/ProductsPage.jsx"));
+const SearchPage = lazy(() => import("./pages/SearchPage.jsx"));
+const DrinksPage = lazy(() => import("./pages/DrinksPage.jsx"));
+const HomePage = lazy(() => import("./pages/HomePage.jsx"));
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage.jsx"));
+const ProductDetailsPage = lazy(() => import("./pages/ProductDetailsPage.jsx"));
+const CommentsPage = lazy(() => import("./pages/CommentsPage.jsx"));
+const ViewPage = lazy(() => import("./pages/ViewPage.jsx"));
 
 const getActiveClass = ({ isActive }) =>
   clsx(css.navLink, { [css.active]: isActive });
@@ -29,6 +29,7 @@ const App = () => {
       </nav>
       </header>
       <main>
+      <Suspense fallback={<div>Loading...</div>}>
         <Routes>
         <Route path="/" element={<HomePage />} />
            <Route path="/mailbox" element={<MailBoxPage />} />
@@ -40,6 +41,7 @@ const App = () => {
            <Route path="/drinks" element={<DrinksPage />} />
            <Route path="*" element={<NotFoundPage />} />
         </Routes>
+        </Suspense>
       </main>
     </div>
   );
