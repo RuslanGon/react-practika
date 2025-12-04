@@ -2,6 +2,7 @@ import React, { Suspense, lazy } from "react";
 import css from "./App.module.css";
 import { NavLink, Route, Routes } from "react-router-dom";
 import clsx from "clsx";
+import Loader from "./components/Loader.jsx";
 const MailBoxPage = lazy(() => import("./pages/MailBoxPage.jsx"));
 const ProductsPage = lazy(() => import("./pages/ProductsPage.jsx"));
 const SearchPage = lazy(() => import("./pages/SearchPage.jsx"));
@@ -29,7 +30,7 @@ const App = () => {
       </nav>
       </header>
       <main>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Loader />}>
         <Routes>
         <Route path="/" element={<HomePage />} />
            <Route path="/mailbox" element={<MailBoxPage />} />
