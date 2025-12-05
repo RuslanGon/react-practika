@@ -5,19 +5,23 @@ import data from '../../data.json';
 import { useEffect, useMemo, useState } from 'react';
 import { nanoid } from 'nanoid';
 import MailBoxForm from '../components/MailBoxForm.jsx';
+import { useSelector } from 'react-redux';
   
 function MailBoxPage() {
 
-const [filter, setFilter] = useState('')  
-const [users, setUsers]  = useState(() => {
-  const stingiUsers = localStorage.getItem('users')
-  if(!stingiUsers) return data.meestExpres
-  const parseUsers = JSON.parse(stingiUsers)
-  if (!Array.isArray(parseUsers) || parseUsers.length === 0) {
-    return data.meestExpres;
-  }
-  return parseUsers;
-}) 
+// const [filter, setFilter] = useState('')  
+// const [users, setUsers]  = useState(() => {
+//   const stingiUsers = localStorage.getItem('users')
+//   if(!stingiUsers) return data.meestExpres
+//   const parseUsers = JSON.parse(stingiUsers)
+//   if (!Array.isArray(parseUsers) || parseUsers.length === 0) {
+//     return data.meestExpres;
+//   }
+//   return parseUsers;
+// }) 
+
+const users = useSelector(state => state.mailbox.users);
+const filter = useSelector(state => state.mailbox.filter);
 
 useEffect(() => {
   localStorage.setItem('users', JSON.stringify(users))
