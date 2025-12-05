@@ -5,21 +5,11 @@ import data from '../../data.json';
 import { useEffect, useMemo, useState } from 'react';
 import { nanoid } from 'nanoid';
 import MailBoxForm from '../components/MailBoxForm.jsx';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
   
 function MailBoxPage() {
 
-// const [filter, setFilter] = useState('')  
-// const [users, setUsers]  = useState(() => {
-//   const stingiUsers = localStorage.getItem('users')
-//   if(!stingiUsers) return data.meestExpres
-//   const parseUsers = JSON.parse(stingiUsers)
-//   if (!Array.isArray(parseUsers) || parseUsers.length === 0) {
-//     return data.meestExpres;
-//   }
-//   return parseUsers;
-// }) 
-
+const dispatch = useDispatch()
 const users = useSelector(state => state.mailbox.users);
 const filter = useSelector(state => state.mailbox.filter);
 
@@ -32,16 +22,18 @@ const finalUser = {
   ...formData,
   id: nanoid()
 } 
-// setUsers([...users, finalUser])
-setUsers(prevState => [...prevState, finalUser]) 
+const action = {type: "mailbox/ADD_USER", payload: finalUser}
+dispatch(action)
 }
 
 const onDeleteUser = (userId) => {
-setUsers(prevUsers => prevUsers.filter(user => user.id !== userId))
+  const action = { type: "mailbox/DELETE_USER", payload: userId }
+  dispatch(action)
 }
 
 const onChangeFilter = (e) => {
-setFilter(e.target.value)
+  const action = {type: "mailbox/SET_FILTER",payload: e.target.value }
+  dispatch(action)
 }
 
 const filteredUsers = useMemo(() => {
