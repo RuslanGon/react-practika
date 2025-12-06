@@ -1,14 +1,9 @@
 import React from "react";
 
-const MailBox = ({ boxTitle, mailBoxCount,boxUsers }) => {
+const MailBox = ({ boxTitle, boxUsers }) => {
   return (
     <div>
       <h1>{boxTitle}</h1>
-      {mailBoxCount > 0 ? 
-      <p>Количество активных ячеек: {mailBoxCount}</p>
-       : 
-      <p><b>Нет ативных ячеек</b></p>
-      }
       <ul>
         {Array.isArray(boxUsers) && boxUsers.map((user) => (
          <li key={user.id}>
