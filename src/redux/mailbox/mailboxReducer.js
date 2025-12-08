@@ -16,7 +16,7 @@ const INITIAL_STATE = {
         state.users = state.users.filter((user) => user.id !== action.payload);
       },
       setFilter(state, action) {
-        state.filter = action / payload;
+        state.filter = action.payload;
       },
     },
   });
