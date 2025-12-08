@@ -1,7 +1,6 @@
 
 import '../App.css'
 import MailBox from '../components/MailBox.jsx'
-import data from '../../data.json';
 import { useEffect, useMemo, useState } from 'react';
 import { nanoid } from 'nanoid';
 import MailBoxForm from '../components/MailBoxForm.jsx';
@@ -23,19 +22,12 @@ const finalUser = {
   ...formData,
   id: nanoid()
 } 
-const action = addUser(finalUser)
-dispatch(action)
+dispatch(addUser(finalUser))
 }
 
-const onDeleteUser = (userId) => {
-  const action = deleteUser(userId)
-  dispatch(action)
-}
+const onDeleteUser = (userId) => {dispatch(deleteUser(userId))}
 
-const onChangeFilter = (e) => {
-  const action = setFilter(e.target.value)
-  dispatch(action)
-}
+const onChangeFilter = (e) => {dispatch(setFilter(e.target.value))}
 
 const filteredUsers = useMemo(() => {
   return users.filter(user =>
