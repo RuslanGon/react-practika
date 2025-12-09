@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { apiRequestProductsDetailsById } from "./operations.js";
+import { apiGetProducts, apiRequestProductsDetailsById } from "./operations.js";
 
 const INITIAL_STATE = {
     productDetails: null,
+    products: null,
     isLoading: false,
     isError: false
   };
@@ -20,6 +21,18 @@ const INITIAL_STATE = {
       state.productDetails = action.payload
     })
     .addCase(apiRequestProductsDetailsById.rejected, (state) => {
+      state.isLoading = false
+      state.isError = true
+    })
+    .addCase(apiGetProducts.pending, state => {
+      state.isLoading = true
+      state.isError = false
+    }) 
+    .addCase(apiGetProducts.fulfilled, (state, action) => {
+      state.isLoading = false
+      state.products = action.payload.products
+    })
+    .addCase(apiGetProducts.rejected, (state) => {
       state.isLoading = false
       state.isError = true
     })

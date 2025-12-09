@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react"
 import { requestProducts, requestProductsByQuery } from "../services/api.js"
 import { useSearchParams } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux"
+import { apiGetProducts } from "../redux/productDetails/operations.js"
+
 
 export const useProductSearch = ({isSearhPage = false}) => {
 
-    const [products, setProducts] = useState(null)
+const dispatch = useDispatch()
+const products = useSelector(state => state.productDetails.products)
+    // const [products, setProducts] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
     const [isError, setIsError] = useState(false)
     // const [query, setQuery] = useState('')
@@ -14,20 +19,7 @@ export const useProductSearch = ({isSearhPage = false}) => {
   
     useEffect(() => {
       if(isSearhPage) return
-      async function fetchProducts() {
-        setIsLoading(true)
-        setIsError(false)
-        try {
-          const data = await requestProducts()
-          setProducts(data.products)
-        } catch (error) {
-          console.error(error)
-          setIsError(true)
-        } finally {
-          setIsLoading(false)
-        }
-      }
-      fetchProducts()
+     dispatch(apiGetProducts())
     }, [isSearhPage])
   
      useEffect(() => {
