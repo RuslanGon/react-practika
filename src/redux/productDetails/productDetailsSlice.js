@@ -3,7 +3,7 @@ import { apiRequestProductsDetailsById } from "./operations.js";
 
 const INITIAL_STATE = {
     productDetails: null,
-    isLoader: false,
+    isLoading: false,
     isError: false
   };
 
@@ -12,15 +12,15 @@ const INITIAL_STATE = {
     initialState: INITIAL_STATE,
     extraReducers: (builder) => builder
     .addCase(apiRequestProductsDetailsById.pending, state => {
-      state.isLoader = true
+      state.isLoading = true
       state.isError = false
     }) 
     .addCase(apiRequestProductsDetailsById.fulfilled, (state, action) => {
-      state.isLoader = false
+      state.isLoading = false
       state.productDetails = action.payload
     })
     .addCase(apiRequestProductsDetailsById.rejected, (state) => {
-      state.isLoader = false
+      state.isLoading = false
       state.isError = true
     })
   });
