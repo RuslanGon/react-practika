@@ -1,7 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const INITIAL_STATE = {
-    product: [],
+    productDetails: null,
+    isLoader: false,
+    isError: false
   };
 
   const productDetailsSlice = createSlice({
