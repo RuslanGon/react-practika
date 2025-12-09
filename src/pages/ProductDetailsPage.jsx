@@ -1,40 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Loader from "../components/Loader.jsx";
 import Error from "../components/Error.jsx";
-import { requestProductDetailsById } from "../services/api.js";
 import css from "./ProductDetailsPage.module.css";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { apiRequestProductsDetailsById } from "../redux/productDetails/operations.js";
 
 const ProductDetailsPage = () => {
   const { productId } = useParams();
   const navigate = useNavigate();
-  // const [productDetails, setProductDetails] = useState(null);
-  // const [isLoading, setIsLoading] = useState(false);
-  // const [isError, setIsError] = useState(false);
   const dispatch = useDispatch()
+
   const productDetails = useSelector(state => state.productDetails.productDetails)
   const isLoading = useSelector(state => state.productDetails.isLoading)
   const isError = useSelector(state => state.productDetails.isError)
 
-
-
-  useEffect(() => {
-    async function fetchProductDetails() {
-      setIsLoading(true);
-      setIsError(false);
-      try {
-        const data = await requestProductDetailsById(productId);
-        setProductDetails(data);
-      } catch (error) {
-        console.error(error);
-        setIsError(true);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-    if (productId) fetchProductDetails();
-  }, [productId]);
+useEffect(() => {
+  dispatch(apiRequestProductsDetailsById(productId))
+}, [dispatch, productId])
 
   return (
     <div className={css.container}>
