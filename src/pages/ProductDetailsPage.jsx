@@ -4,13 +4,20 @@ import Error from "../components/Error.jsx";
 import { requestProductDetailsById } from "../services/api.js";
 import css from "./ProductDetailsPage.module.css";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 const ProductDetailsPage = () => {
   const { productId } = useParams();
   const navigate = useNavigate();
-  const [productDetails, setProductDetails] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
+  // const [productDetails, setProductDetails] = useState(null);
+  // const [isLoading, setIsLoading] = useState(false);
+  // const [isError, setIsError] = useState(false);
+  const dispatch = useDispatch()
+  const productDetails = useSelector(state => state.productDetails.productDetails)
+  const isLoading = useSelector(state => state.productDetails.isLoading)
+  const isError = useSelector(state => state.productDetails.isError)
+
+
 
   useEffect(() => {
     async function fetchProductDetails() {
