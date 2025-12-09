@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { apiRequestProductsDetailsById } from "./operations.js";
 
 const INITIAL_STATE = {
     productDetails: null,
@@ -9,6 +10,19 @@ const INITIAL_STATE = {
   const productDetailsSlice = createSlice({
     name: "productDetails",
     initialState: INITIAL_STATE,
+    extraReducers: (builder) => builder
+    .addCase(apiRequestProductsDetailsById.pending, state => {
+      state.isLoader = true
+      state.isError = false
+    }) 
+    .addCase(apiRequestProductsDetailsById.fulfilled, (state, action) => {
+      state.isLoader = false
+      state.productDetails = action.payload
+    })
+    .addCase(apiRequestProductsDetailsById.rejected, (state) => {
+      state.isLoader = false
+      state.isError = true
+    })
   });
 
   export const productDetailsReducer = productDetailsSlice.reducer
