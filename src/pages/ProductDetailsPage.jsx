@@ -5,15 +5,20 @@ import css from "./ProductDetailsPage.module.css";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { apiRequestProductsDetailsById } from "../redux/productDetails/operations.js";
+import { selectIsError, selectIsLoading, selectProductDetails } from "../redux/productDetails/selector.js";
 
 const ProductDetailsPage = () => {
   const { productId } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch()
 
-  const productDetails = useSelector(state => state.productDetails.productDetails)
-  const isLoading = useSelector(state => state.productDetails.isLoading)
-  const isError = useSelector(state => state.productDetails.isError)
+  // const productDetails = useSelector(state => state.productDetails.productDetails)
+  const productDetails = useSelector(selectProductDetails)
+  // const isLoading = useSelector(state => state.productDetails.isLoading)
+  const isLoading = useSelector(selectIsLoading)
+  // const isError = useSelector(state => state.productDetails.isError)
+  const isError = useSelector(selectIsError)
+
 
 useEffect(() => {
   dispatch(apiRequestProductsDetailsById(productId))
