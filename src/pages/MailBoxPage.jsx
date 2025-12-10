@@ -14,14 +14,14 @@ function MailBoxPage() {
 const dispatch = useDispatch()
 const filteresUsers = useSelector(selectFilteredUsers)
 // const users = useSelector(state => state.mailbox.users);
-const users = useSelector(selectUsers);
+// const users = useSelector(selectUsers)
 // const filter = useSelector(state => state.mailbox.filter);
 // const filter = useSelector(selectFilter);
 
 
-useEffect(() => {
-  localStorage.setItem('users', JSON.stringify(users))
-   }, [users])
+// useEffect(() => {
+//   localStorage.setItem('users', JSON.stringify(users))
+//    }, [users])
 
 const onAddUser = (formData) => {
 const finalUser = {
