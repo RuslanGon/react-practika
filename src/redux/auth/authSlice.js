@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { apiRegister } from "./operations.js";
 
 const INITIAL_STATE = {
 isSignedIn: false,
@@ -12,7 +13,18 @@ isSignedIn: false,
     name: "auth",
     initialState: INITIAL_STATE,
     extraReducers: (builder) => builder
-  
+    .addCase(apiRegister.pending, state => {
+        state.isLoading = true
+        state.isError = false
+      }) 
+      .addCase(apiRegister.fulfilled, (state, action) => {
+        state.isLoading = false
+        state.productDetails = action.payload
+      })
+      .addCase(apiRegister.rejected, (state) => {
+        state.isLoading = false
+        state.isError = true
+      })
   });
 
   export const authReducer = authSlice.reducer

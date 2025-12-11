@@ -1,6 +1,8 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as yup from "yup";
 import css from "./RegistrationPage.module.css";
+import { useDispatch } from "react-redux";
+import { apiRegister } from "../redux/auth/operations.js";
 
 const initialValues = {
   name: "",
@@ -25,7 +27,11 @@ const registerSchema = yup.object().shape({
 });
 
 const RegistrationPage = () => {
+const dispatch = useDispatch()
+
+
   const handleSubmit = (values, actions) => {
+    dispatch(apiRegister(values))
     actions.resetForm();
   };
 
