@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { requestProductDetailsById, requestProducts } from "../../services/api.js";
+import { requestProductDetailsById, requestProducts, requestProductsByQuery } from "../../services/api.js";
 
 export const apiRequestProductsDetailsById = createAsyncThunk(
     'productDetails/get',
@@ -24,3 +24,11 @@ export const apiGetProducts = createAsyncThunk(
         }
     }
 )
+
+export const apiSearchProducts = createAsyncThunk(
+    "products/search",
+    async (query) => {
+      const data = await requestProductsByQuery(query);
+      return data.products;
+    }
+  );
