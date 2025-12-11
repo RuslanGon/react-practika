@@ -1,7 +1,7 @@
 import React, { Suspense, lazy } from "react";
-import { NavLink, Route, Routes } from "react-router-dom";
-import Loader from "./components/Loader.jsx";
-import Layout from "./components/Layout.jsx";
+import { Route, Routes } from "react-router-dom";
+const Loader = lazy(() => import("./components/Loader.jsx"));
+const Layout = lazy(() => import("./components/Layout.jsx"));
 const ContactsPage = lazy(() => import("./pages/ContactsPage.jsx"));
 const LoginPage = lazy(() => import("./pages/LoginPage.jsx"));
 const RegistrationPage = lazy(() => import("./pages/RegistrationPage.jsx"));
@@ -21,7 +21,7 @@ const App = () => {
     <Layout>
       <Suspense fallback={<Loader />}>
         <Routes>
-        <Route path="/" element={<HomePage />} />
+           <Route path="/" element={<HomePage />} />
            <Route path="/mailbox" element={<MailBoxPage />} />
            <Route path="/products" element={<ProductsPage />} />
            <Route path="/products/:productId/*" element={<ProductDetailsPage />} />
