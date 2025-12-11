@@ -16,12 +16,11 @@ export const clearerToken = (token) => {
 export const apiRegister = createAsyncThunk(
     'auth/register',
     async (formData, thunkApi) => {
-        try {
-            const data = await instance.post('/users/signup', formData)
-            console.log(data);
-            return data
-        } catch (error) {
-            return thunkApi.rejectWithValue(error.message)
-        }
+      try {
+        const response = await instance.post('/users/signup', formData);
+        return response.data;
+      } catch (error) {
+        return thunkApi.rejectWithValue(error.response?.data || error.message);
+      }
     }
-)
+  );

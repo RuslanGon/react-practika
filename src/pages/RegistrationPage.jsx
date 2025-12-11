@@ -23,6 +23,7 @@ const registerSchema = yup.object().shape({
 
   password: yup
     .string()
+    .min(7, "Password must be at least 7 characters") 
     .required("enter your password, please"),
 });
 
@@ -30,10 +31,15 @@ const RegistrationPage = () => {
 const dispatch = useDispatch()
 
 
-  const handleSubmit = (values, actions) => {
-    dispatch(apiRegister(values))
+const handleSubmit = async (values, actions) => {
+  try {
+    const result = await dispatch(apiRegister(values)).unwrap();
+    console.log("Регистрация успешна:", result);
     actions.resetForm();
-  };
+  } catch (error) {
+    console.log("Ошибка регистрации:", error);
+  }
+};
 
   return (
     <Formik initialValues={initialValues} onSubmit={handleSubmit}
