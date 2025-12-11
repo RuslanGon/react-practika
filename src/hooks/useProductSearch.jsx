@@ -8,10 +8,8 @@ export const useProductSearch = ({ isSearhPage = false }) => {
 
   const dispatch = useDispatch()
   
-  // если SearchPage — работаем с локальным products
   const [products, setProducts] = useState(null)
 
-  // если НЕ SearchPage — берем глобальные продукты
   const globalProducts = useSelector(state => state.productDetails.products)
 
   const [isLoading, setIsLoading] = useState(false)

@@ -3,6 +3,9 @@ import css from "./App.module.css";
 import { NavLink, Route, Routes } from "react-router-dom";
 import clsx from "clsx";
 import Loader from "./components/Loader.jsx";
+import ContactsPage from "./pages/ContactsPage.jsx";
+import LoginPage from "./pages/LoginPage.jsx";
+import RegistrationPage from "./pages/RegistrationPage .jsx";
 const MailBoxPage = lazy(() => import("./pages/MailBoxPage.jsx"));
 const ProductsPage = lazy(() => import("./pages/ProductsPage.jsx"));
 const SearchPage = lazy(() => import("./pages/SearchPage.jsx"));
@@ -27,6 +30,9 @@ const App = () => {
         <NavLink className={getActiveClass} to="/products">Products</NavLink>
         <NavLink className={getActiveClass} to="/search">Search Page</NavLink>
         <NavLink className={getActiveClass} to="/drinks">Drinks</NavLink>
+        <NavLink className={getActiveClass} to="/contacts">ContactsPage</NavLink>
+        <NavLink className={getActiveClass} to="/login">Login</NavLink>
+        <NavLink className={getActiveClass} to="/register">Register</NavLink>
       </nav>
       </header>
       <main>
@@ -40,6 +46,12 @@ const App = () => {
            <Route path="/view" element={<ViewPage />} />
            <Route path="/search" element={<SearchPage />} />
            <Route path="/drinks" element={<DrinksPage />} />
+           <Route path="/contacts" element={<ContactsPage />} />
+           <Route path="/login" element={<LoginPage />} />
+           <Route path="/register" element={<RegistrationPage />} />
+
+
+
            <Route path="*" element={<NotFoundPage />} />
         </Routes>
         </Suspense>
