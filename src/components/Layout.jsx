@@ -2,11 +2,17 @@ import clsx from 'clsx';
 import React from 'react'
 import css from '../App.module.css'
 import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { selectAuthIsSignedIn } from '../redux/auth/selectors.js';
 
 const getActiveClass = ({ isActive }) =>
     clsx(css.navLink, { [css.active]: isActive });
 
 const Layout = ({children}) => {
+
+  const isSignetIn = useSelector(selectAuthIsSignedIn)   
+
+
   return (
     <div>
           <header>
