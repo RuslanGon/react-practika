@@ -1,5 +1,4 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import React from "react";
 import * as yup from "yup";
 import css from "./RegistrationPage.module.css";
 
@@ -27,7 +26,6 @@ const registerSchema = yup.object().shape({
 
 const RegistrationPage = () => {
   const handleSubmit = (values, actions) => {
-    console.log(values);
     actions.resetForm();
   };
 
