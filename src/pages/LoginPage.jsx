@@ -8,7 +8,7 @@ const initialValues = {
   password: "",
 };
 
-const registerSchema = yup.object().shape({
+const loginSchema = yup.object().shape({
   email: yup
     .string()
     .email("Must be a valid email!")
@@ -26,11 +26,8 @@ const LoginPage = () => {
   };
 
   return (
-    <Formik
-      initialValues={initialValues}
-      onSubmit={handleSubmit}
-      validationSchema={registerSchema}
-    >
+    <Formik initialValues={initialValues} onSubmit={handleSubmit}
+      validationSchema={loginSchema}>
       <Form className={css.form}>
         <h2 className={css.title}>Login form</h2>
         <label className={css.label}>

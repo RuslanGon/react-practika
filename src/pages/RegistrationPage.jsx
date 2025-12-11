@@ -32,14 +32,10 @@ const RegistrationPage = () => {
   };
 
   return (
-    <Formik
-      initialValues={initialValues}
-      onSubmit={handleSubmit}
-      validationSchema={registerSchema}
-    >
+    <Formik initialValues={initialValues} onSubmit={handleSubmit}
+      validationSchema={registerSchema}>
       <Form className={css.form}>
         <h2 className={css.title}>Register form</h2>
-
         <label className={css.label}>
           <span>user name:</span>
           <Field
