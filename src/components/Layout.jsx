@@ -18,6 +18,7 @@ const Layout = ({children}) => {
           <header>
       <nav className={css.nav}>
       <NavLink className={getActiveClass} to="/">Home Page</NavLink>
+      {isSignetIn ? <></> : <></>}
         <NavLink className={getActiveClass} to="/mailbox">MailBox</NavLink>
         <NavLink className={getActiveClass} to="/products">Products</NavLink>
         <NavLink className={getActiveClass} to="/search">Search Page</NavLink>
