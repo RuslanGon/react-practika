@@ -56,7 +56,6 @@ const handleSubmit = async (values, actions) => {
           />
           <ErrorMessage name="name" component="span" className={css.error} />
         </label>
-
         <label className={css.label}>
           <span>user email:</span>
           <Field
