@@ -1,6 +1,8 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as yup from "yup";
 import css from "./RegistrationPage.module.css";
+import { useDispatch } from "react-redux";
+import { apiLogim } from "../redux/auth/operations.js";
 
 const initialValues = {
   email: "",
@@ -19,7 +21,10 @@ const loginSchema = yup.object().shape({
 });
 
 const LoginPage = () => {
+const dispatch = useDispatch()
+
   const handleSubmit = (values, actions) => {
+    dispatch(apiLogim(values))
     actions.resetForm();
   };
 
@@ -48,7 +53,6 @@ const LoginPage = () => {
           />
           <ErrorMessage name="password" component="span" className={css.error} />
         </label>
-
         <button className={css.button} type="submit">
           login user
         </button>

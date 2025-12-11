@@ -1,5 +1,7 @@
 import React, { Suspense, lazy } from "react";
 import { Route, Routes } from "react-router-dom";
+import { selectAuthIsSignedIn } from "./redux/auth/selectors.js";
+import { useSelector } from "react-redux";
 const Loader = lazy(() => import("./components/Loader.jsx"));
 const Layout = lazy(() => import("./components/Layout.jsx"));
 const ContactsPage = lazy(() => import("./pages/ContactsPage.jsx"));
@@ -17,21 +19,30 @@ const ViewPage = lazy(() => import("./pages/ViewPage.jsx"));
 
 const App = () => {
 
+const isSignedIn = useSelector(selectAuthIsSignedIn) 
+
   return (
     <Layout>
       <Suspense fallback={<Loader />}>
         <Routes>
            <Route path="/" element={<HomePage />} />
-           <Route path="/mailbox" element={<MailBoxPage />} />
-           <Route path="/products" element={<ProductsPage />} />
-           <Route path="/products/:productId/*" element={<ProductDetailsPage />} />
-           <Route path="/comments" element={<CommentsPage />} />
-           <Route path="/view" element={<ViewPage />} />
-           <Route path="/search" element={<SearchPage />} />
-           <Route path="/drinks" element={<DrinksPage />} />
-           <Route path="/contacts" element={<ContactsPage />} />
-           <Route path="/login" element={<LoginPage />} />
-           <Route path="/register" element={<RegistrationPage />} />
+           {isSignedIn ? (
+  <>
+    <Route path="/contacts" element={<ContactsPage />} />
+    <Route path="/mailbox" element={<MailBoxPage />} />
+    <Route path="/products" element={<ProductsPage />} />
+    <Route path="/products/:productId/*" element={<ProductDetailsPage />} />
+    <Route path="/comments" element={<CommentsPage />} />
+    <Route path="/view" element={<ViewPage />} />
+    <Route path="/search" element={<SearchPage />} />
+    <Route path="/drinks" element={<DrinksPage />} />
+  </>
+) : (
+  <>
+    <Route path="/register" element={<RegistrationPage />} />
+    <Route path="/login" element={<LoginPage />} />
+  </>
+)}
            <Route path="*" element={<NotFoundPage />} />
         </Routes>
         </Suspense>

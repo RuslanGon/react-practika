@@ -25,3 +25,16 @@ export const apiRegister = createAsyncThunk(
       }
     }
   );
+
+  export const apiLogim = createAsyncThunk(
+    'auth/login',
+    async (formData, thunkApi) => {
+      try {
+        const {data} = await instance.post('/users/login', formData);
+        setToken(data.token)
+        return data;
+      } catch (error) {
+        return thunkApi.rejectWithValue(error.response?.data || error.message);
+      }
+    }
+  );
