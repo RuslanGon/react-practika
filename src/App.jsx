@@ -17,8 +17,6 @@ const ViewPage = lazy(() => import("./pages/ViewPage.jsx"));
 
 const App = () => {
 
-
-
   return (
     <Layout>
       <Suspense fallback={<Loader />}>
