@@ -38,3 +38,26 @@ export const apiRegister = createAsyncThunk(
       }
     }
   );
+
+  export const apiRefreshUser = createAsyncThunk(
+    'auth/refresh',
+    async (_, thunkApi) => {
+      const state = thunkApi.getState();
+      const token = state.auth.token;
+  
+      if (!token) {
+        return thunkApi.rejectWithValue('No token found');
+      }
+  
+      setToken(token);
+  
+      try {
+        const { data } = await instance.get('/users/current');
+        console.log("Refresh successful");
+        return data;
+      } catch (error) {
+        return thunkApi.rejectWithValue(error.response?.data || error.message);
+      }
+    }
+  );
+  

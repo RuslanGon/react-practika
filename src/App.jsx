@@ -1,5 +1,7 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Route, Routes } from "react-router-dom";
+import { apiRefreshUser } from "./redux/auth/operations.js";
 const Loader = lazy(() => import("./components/Loader.jsx"));
 const Layout = lazy(() => import("./components/Layout.jsx"));
 const ContactsPage = lazy(() => import("./pages/ContactsPage.jsx"));
@@ -16,6 +18,11 @@ const CommentsPage = lazy(() => import("./pages/CommentsPage.jsx"));
 const ViewPage = lazy(() => import("./pages/ViewPage.jsx"));
 
 const App = () => {
+
+const dispatch = useDispatch()
+useEffect(() => {
+  dispatch(apiRefreshUser())
+}, [dispatch])  
 
   return (
     <Layout>
