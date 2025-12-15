@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { apiAddNewContact, apiGetContacts } from "./operations.js";
+import { apiAddNewContact, apiDeleteContact, apiGetContacts } from "./operations.js";
 
 const INITIAL_STATE = {
   contacts: null,  
@@ -34,6 +34,19 @@ const INITIAL_STATE = {
 
       })
       .addCase(apiAddNewContact.rejected, (state) => {
+        state.isLoading = false
+        state.isError = true
+      })
+      .addCase(apiDeleteContact.pending, state => {
+        state.isLoading = true
+        state.isError = false
+      }) 
+      .addCase(apiDeleteContact.fulfilled, (state, action) => {
+        state.isLoading = false
+        state.contacts = state.contacts.filter(contact => contact.id!== action.payload.id)
+
+      })
+      .addCase(apiDeleteContact.rejected, (state) => {
         state.isLoading = false
         state.isError = true
       })

@@ -5,7 +5,7 @@ import {
   selectContactsIsError,
   selectContactsIsLoading,
 } from "../redux/contacts/selectors.js";
-import { apiGetContacts } from "../redux/contacts/operations.js";
+import { apiDeleteContact, apiGetContacts } from "../redux/contacts/operations.js";
 import Loader from "../components/Loader.jsx";
 import Error from "../components/Error.jsx";
 import AddNewContactForm from "../components/AddNewContactForm.jsx";
@@ -19,6 +19,11 @@ const ContactsPage = () => {
   useEffect(() => {
     dispatch(apiGetContacts());
   }, []);
+
+  const handleDeleteContact = (contactId) => {
+    dispatch(apiDeleteContact(contactId))
+  }
+
   return (
     <div>
     <h2>Phone Book</h2>
@@ -33,7 +38,8 @@ const ContactsPage = () => {
       <ul>
         {contacts.map(contact => (
           <li key={contact.id}>
-            <h3>Name: {contact.name}</h3>
+            <h3>Name: {contact.name} 
+            <button onClick={() => handleDeleteContact(contact.id)} type='button'> delete contact</button></h3>
             <p>Number: {contact.number}</p>
           </li>
         ))}
