@@ -2,6 +2,7 @@ import React, { Suspense, lazy, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import { apiRefreshUser } from "./redux/auth/operations.js";
+import RestrictedRoute from "./components/RestrictedRoute.jsx";
 const Loader = lazy(() => import("./components/Loader.jsx"));
 const Layout = lazy(() => import("./components/Layout.jsx"));
 const ContactsPage = lazy(() => import("./pages/ContactsPage.jsx"));
@@ -18,31 +19,35 @@ const CommentsPage = lazy(() => import("./pages/CommentsPage.jsx"));
 const ViewPage = lazy(() => import("./pages/ViewPage.jsx"));
 
 const App = () => {
-
-const dispatch = useDispatch()
-useEffect(() => {
-  dispatch(apiRefreshUser())
-}, [dispatch])  
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(apiRefreshUser());
+  }, [dispatch]);
 
   return (
     <Layout>
       <Suspense fallback={<Loader />}>
         <Routes>
-           <Route path="/" element={<HomePage />} />
-           <Route path="/register" element={<RegistrationPage />} />
-           <Route path="/login" element={<LoginPage />} />
-            <Route path="/contacts" element={<ContactsPage />} />
-           <Route path="/mailbox" element={<MailBoxPage />} />
-           <Route path="/products" element={<ProductsPage />} />
-           <Route path="/products/:productId/*" element={<ProductDetailsPage />} />
-           <Route path="/comments" element={<CommentsPage />} />
-           <Route path="/view" element={<ViewPage />} />
-           <Route path="/search" element={<SearchPage />} />
-           <Route path="/drinks" element={<DrinksPage />} />
-           <Route path="*" element={<NotFoundPage />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/register"
+          element={<RestrictedRoute><RegistrationPage /></RestrictedRoute>} />
+          <Route path="/login" 
+          element={<RestrictedRoute><LoginPage /> </RestrictedRoute>} />
+          <Route path="/contacts" element={<ContactsPage />} />
+          <Route path="/mailbox" element={<MailBoxPage />} />
+          <Route path="/products" element={<ProductsPage />} />
+          <Route
+            path="/products/:productId/*"
+            element={<ProductDetailsPage />}
+          />
+          <Route path="/comments" element={<CommentsPage />} />
+          <Route path="/view" element={<ViewPage />} />
+          <Route path="/search" element={<SearchPage />} />
+          <Route path="/drinks" element={<DrinksPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
-        </Suspense>
-        </Layout>
+      </Suspense>
+    </Layout>
   );
 };
 

@@ -24,11 +24,9 @@ const loginSchema = yup.object().shape({
 
 const LoginPage = () => {
 const dispatch = useDispatch()
-const navigate = useNavigate();
 
   const handleSubmit = (values, actions) => {
     dispatch(apiLogim(values))
-    navigate('/')
     actions.resetForm();
   };
 
