@@ -41,8 +41,8 @@ const App = () => {
           <Route path="/products" 
           element={<PrivateRoute><ProductsPage /></PrivateRoute>} />
           <Route
-            path="/products/:productId/*"
-            element={<PrivateRoute><ProductDetailsPage /> </PrivateRoute>}/>
+          path="/products/:productId/*"
+          element={<PrivateRoute><ProductDetailsPage /> </PrivateRoute>}/>
           <Route path="/comments" 
           element={<PrivateRoute><CommentsPage /> </PrivateRoute>} />
           <Route path="/view" 
