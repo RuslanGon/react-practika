@@ -10,7 +10,6 @@ const INITIAL_STATE = {
     name: "contacts",
     initialState: INITIAL_STATE,
 
-        
   });
 
   export const contactsReducer = contactsSlice.reducer
