@@ -3,6 +3,8 @@ import * as yup from "yup";
 import css from "./RegistrationPage.module.css";
 import { useDispatch } from "react-redux";
 import { apiLogim } from "../redux/auth/operations.js";
+import { useNavigate } from "react-router-dom";
+
 
 const initialValues = {
   email: "",
@@ -22,9 +24,11 @@ const loginSchema = yup.object().shape({
 
 const LoginPage = () => {
 const dispatch = useDispatch()
+const navigate = useNavigate();
 
   const handleSubmit = (values, actions) => {
     dispatch(apiLogim(values))
+    navigate('/')
     actions.resetForm();
   };
 
