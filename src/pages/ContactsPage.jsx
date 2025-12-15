@@ -1,9 +1,45 @@
-import React from 'react'
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectContacts,
+  selectContactsIsError,
+  selectContactsIsLoading,
+} from "../redux/contacts/selectors.js";
+import { apiGetContacts } from "../redux/contacts/operations.js";
+import Loader from "../components/Loader.jsx";
+import Error from "../components/Error.jsx";
 
 const ContactsPage = () => {
-  return (
-    <div>ContactsPage</div>
-  )
-}
+  const dispatch = useDispatch();
+  const contacts = useSelector(selectContacts);
+  const isLoading = useSelector(selectContactsIsLoading);
+  const isError = useSelector(selectContactsIsError);
 
-export default ContactsPage
+  useEffect(() => {
+    dispatch(apiGetContacts());
+  }, []);
+  return (
+    <div>
+    <h2>Phone Book</h2>
+  
+    {isLoading && <Loader />}
+    {isError && <Error />}
+  
+    {Array.isArray(contacts) && contacts.length === 0 && (
+      <p>No contacts yet. Add your first contact 📞</p>
+    )}
+    {Array.isArray(contacts) && contacts.length > 0 && (
+      <ul>
+        {contacts.map(contact => (
+          <li key={contact._id}>
+            <h3>Name: {contact.name}</h3>
+            <p>Number: {contact.number}</p>
+          </li>
+        ))}
+      </ul>
+    )}
+  </div>
+  );
+};
+
+export default ContactsPage;

@@ -2,7 +2,10 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const instance = axios.create({
-    baseURL: 'https://connections-api.goit.global'
+    baseURL: 'https://connections-api.goit.global',
+    // headers: {
+    //     Authorization : `Bearer ${localStorage.getItem('token')}`
+    // }
 })
 
 export const setToken = (token) => {
@@ -17,10 +20,19 @@ export const apiGetContacts = createAsyncThunk(
     'contacts/getAll',
     async (_, thunkApi) => {
       try {
-        const {data} = await instance.post('/contacts')
-        return data
+        const state = thunkApi.getState();
+        const token = state.auth.token;
+        if (!token) {
+          return thunkApi.rejectWithValue('No auth token');
+        }
+        setToken(token);
+        const { data } = await instance.get('/contacts');
+        return data;
       } catch (error) {
-        return thunkApi.rejectWithValue(error.response?.data || error.message);
+        return thunkApi.rejectWithValue(
+          error.response?.data || error.message
+        );
       }
     }
   );
+  
