@@ -9,7 +9,7 @@ export const setToken = (token) => {
     instance.defaults.headers.common.Authorization = `Bearer ${token}`
 }
 
-export const clearerToken = (token) => {
+export const clearerToken = () => {
     instance.defaults.headers.common.Authorization = ''
 }
 
@@ -55,6 +55,19 @@ export const apiRegister = createAsyncThunk(
         const { data } = await instance.get('/users/current');
         console.log("Refresh successful");
         return data;
+      } catch (error) {
+        return thunkApi.rejectWithValue(error.response?.data || error.message);
+      }
+    }
+  );
+
+  export const apiLogout = createAsyncThunk(
+    'auth/logout',
+    async (_, thunkApi) => {
+      try {
+        await instance.post('/users/logout');
+        clearerToken()
+        return
       } catch (error) {
         return thunkApi.rejectWithValue(error.response?.data || error.message);
       }

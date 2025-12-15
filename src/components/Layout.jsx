@@ -2,14 +2,21 @@ import clsx from "clsx";
 import React from "react";
 import css from "../App.module.css";
 import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { selectAuthIsSignedIn } from "../redux/auth/selectors.js";
+import { useDispatch, useSelector } from "react-redux";
+import { selectAuthIsSignedIn, selectAuthUserData } from "../redux/auth/selectors.js";
+import { apiLogout } from "../redux/auth/operations.js";
 
 const getActiveClass = ({ isActive }) =>
   clsx(css.navLink, { [css.active]: isActive });
 
 const Layout = ({ children }) => {
+  const dispath = useDispatch()
   const isSignetIn = useSelector(selectAuthIsSignedIn);
+  const userData = useSelector(selectAuthUserData)
+
+  const handleLogout = () => {
+    dispath(apiLogout())
+  }
 
   return (
     <div>
@@ -35,6 +42,11 @@ const Layout = ({ children }) => {
               <NavLink className={getActiveClass} to="/contacts">
                 ContactsPage
               </NavLink>
+              <div
+                style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                <p>Hi {userData.name}</p>
+                <button onClick={handleLogout} type="button">Logout</button>
+              </div>
             </>
           ) : (
             <>
