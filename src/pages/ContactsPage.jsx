@@ -8,6 +8,7 @@ import {
 import { apiGetContacts } from "../redux/contacts/operations.js";
 import Loader from "../components/Loader.jsx";
 import Error from "../components/Error.jsx";
+import AddNewContactForm from "../components/AddNewContactForm.jsx";
 
 const ContactsPage = () => {
   const dispatch = useDispatch();
@@ -21,17 +22,17 @@ const ContactsPage = () => {
   return (
     <div>
     <h2>Phone Book</h2>
-  
+  <AddNewContactForm />
     {isLoading && <Loader />}
     {isError && <Error />}
   
     {Array.isArray(contacts) && contacts.length === 0 && (
       <p>No contacts yet. Add your first contact 📞</p>
     )}
-    {Array.isArray(contacts) && contacts.length > 0 && (
+    {Array.isArray(contacts) && (
       <ul>
         {contacts.map(contact => (
-          <li key={contact._id}>
+          <li key={contact.id}>
             <h3>Name: {contact.name}</h3>
             <p>Number: {contact.number}</p>
           </li>

@@ -35,4 +35,16 @@ export const apiGetContacts = createAsyncThunk(
       }
     }
   );
+
+  export const apiAddNewContact = createAsyncThunk(
+    'contact/addNew',
+    async (formData, thunkApi) => {
+      try {
+        const {data} = await instance.post('/contacts', formData);
+        return data;
+      } catch (error) {
+        return thunkApi.rejectWithValue(error.response?.data || error.message);
+      }
+    }
+  );  
   
