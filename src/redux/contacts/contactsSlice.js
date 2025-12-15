@@ -6,7 +6,7 @@ const INITIAL_STATE = {
   isError: false
   };
 
-  const authSlice = createSlice({
+  const contactsSlice = createSlice({
     name: "contacts",
     initialState: INITIAL_STATE,
 
