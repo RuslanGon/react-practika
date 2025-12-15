@@ -40,7 +40,7 @@ const Layout = ({ children }) => {
                 Drinks
               </NavLink>
               <NavLink className={getActiveClass} to="/contacts">
-                ContactsPage
+                Contacts
               </NavLink>
               <div
                 style={{ display: "flex", alignItems: "center", gap: "12px" }}>

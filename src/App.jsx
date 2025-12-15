@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import { apiRefreshUser } from "./redux/auth/operations.js";
 import RestrictedRoute from "./components/RestrictedRoute.jsx";
+import PrivateRoute from "./components/PrivateRoute.jsx";
 const Loader = lazy(() => import("./components/Loader.jsx"));
 const Layout = lazy(() => import("./components/Layout.jsx"));
 const ContactsPage = lazy(() => import("./pages/ContactsPage.jsx"));
@@ -33,17 +34,23 @@ const App = () => {
           element={<RestrictedRoute><RegistrationPage /></RestrictedRoute>} />
           <Route path="/login" 
           element={<RestrictedRoute><LoginPage /> </RestrictedRoute>} />
-          <Route path="/contacts" element={<ContactsPage />} />
-          <Route path="/mailbox" element={<MailBoxPage />} />
-          <Route path="/products" element={<ProductsPage />} />
+          <Route path="/contacts"
+           element={<PrivateRoute><ContactsPage /> </PrivateRoute>} />
+          <Route path="/mailbox" 
+          element={<PrivateRoute><MailBoxPage /> </PrivateRoute>} />
+          <Route path="/products" 
+          element={<PrivateRoute><ProductsPage /></PrivateRoute>} />
           <Route
             path="/products/:productId/*"
-            element={<ProductDetailsPage />}
-          />
-          <Route path="/comments" element={<CommentsPage />} />
-          <Route path="/view" element={<ViewPage />} />
-          <Route path="/search" element={<SearchPage />} />
-          <Route path="/drinks" element={<DrinksPage />} />
+            element={<PrivateRoute><ProductDetailsPage /> </PrivateRoute>}/>
+          <Route path="/comments" 
+          element={<PrivateRoute><CommentsPage /> </PrivateRoute>} />
+          <Route path="/view" 
+          element={<PrivateRoute><ViewPage /></PrivateRoute>} />
+          <Route path="/search" 
+          element={<PrivateRoute><SearchPage /> </PrivateRoute>} />
+          <Route path="/drinks" 
+          element={<PrivateRoute><DrinksPage /> </PrivateRoute>} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>
